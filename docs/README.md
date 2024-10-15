@@ -4,29 +4,37 @@
 
 ✅ 구분자를 사용해 덧셈할 양수를 입력
 
+✅ 기본적으로 쉼표(,), 또는 콜론(;)이 구분자가 된다.
+
 ```markdown
-ex: "", "1,2:3", "//;\n1;2;3"
+ex: "", "1,2:3", "1;2;3", "4.2;3.5,2"
+```
+
+**🚫 입력 예외 처리**
+
+✅ 0이 들어오거나 음수가 들어온 경우 `IllegalArgumentException`
+
+✅ 숫자, 구분자, 소수점(.)을 제외한 문자가 들어올 경우`IllegalArgumentException`
+
+✅ 구분자의 앞 뒤에 값이 없는 경우 `IllegalArgumentException`
+
+✅ 너무 큰 숫자를 입력한 경우 `IllegalArgumentException`
+
+---
+
+### 📌 커스텀 구분자 입력
+
+✅ “//”와 ”\n” 사이에 위치하는 문자는 커스텀 구분자로 지정해준다.
+
+```markdown
+ex: "//*\n", "//l\n"
 ```
 
 ✅ 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
 
-✅ 기본적으로 쉼표(,), 또는 콜론(;)이 구분자가 된다.
+**🚫 커스텀 구분자 예외 처리**
 
-✅ “//”와 ”\n” 사이에 위치하는 문자는 커스텀 구분자로 지정해준다.
-
-**🚫 예외 처리**
-
-✅ 0이 들어오거나 음수가 들어온 경우 `IllegalArgumentException`
-
-✅ “//”나 “\n” 중 1개만 사용한 경우 `IllegalArgumentException`
-
-✅ 숫자가 아닌 값을 입력한 경우 `IllegalArgumentException`
-
-✅ “//”와 “\n” 사이에 값이 없는 경우 `IllegalArgumentException`
-
-✅ 구분자와 구분자 사이에 값이 없는 경우 `IllegalArgumentException`
-
-✅ 너무 큰 숫자를 입력한 경우 `IllegalArgumentException`
+✅ 커스텀 구분자는 맨 앞에 나오기 때문에 INDEX 형식으로 “/”, “/”, “숫자를 제외한 문자”, “/”, “n” 순서대로 오는지 확인
 
 ---
 
@@ -44,3 +52,5 @@ ex: "", "1,2:3", "//;\n1;2;3"
 **🚫 예외 처리**
 
 ✅ 결과 값이 너무 큰 숫자인 경우 `IllegalArgumentException`
+
+✅ “”처럼 null 값이 들어온다면 0을 출력
